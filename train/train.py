@@ -64,11 +64,17 @@ if __name__ == "__main__":
                                             # token=model_config["token"])
         )
 
+    print("Model Loaded")
+
     train = get_batched_dataset(dataset_config["dataset_path"], chunk_size=dataset_config["chunk_size"])
+    print("dataset loaded")
     model.train()
+
+
 
     # create peft config
     model, lora_config = create_peft_config(model)
+    print("peft config applied")
     enable_profiler = False
     output_dir = train_config["output_dir"]
 
@@ -131,6 +137,7 @@ if __name__ == "__main__":
             callbacks=[profiler_callback] if enable_profiler else [],
         )
 
+    print("starting train")
     # Start training
     trainer.train()
 
