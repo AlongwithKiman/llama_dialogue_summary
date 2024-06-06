@@ -8,6 +8,7 @@ with open('config.json', 'r') as f:
     config_data = json.load(f)
 
 model_id=config_data["model_config"]["model_id"]
+model_token = config_data["model_config"]["token"]
 
 class Concatenator(object):
     def __init__(self, chunk_size=2048):
@@ -43,7 +44,7 @@ class Concatenator(object):
         return result
 
 
-def get_batched_dataset(json_data_path, chunk_size, test_size=0.1):
+def get_batched_dataset(json_data_path, chunk_size):
     tokenizer = AutoTokenizer.from_pretrained(model_id, max_length=4096)
     def apply_prompt_template(sample):
         return {
@@ -64,8 +65,6 @@ def get_batched_dataset(json_data_path, chunk_size, test_size=0.1):
       return dataset
 
     json_dataset = datasets.load_dataset("json", data_files=json_data_path, split="train")
-    splitted_dataset = json_dataset.train_test_split(test_size=test_size)
-    train_dataset, test_dataset = splitted_dataset['train'], splitted_dataset['test']
 
     prompt = (
         f"[INST]아래는 고객과 상담원의 대화입니다. 아래 대화를 한줄로 요약해주세요. \n\n### 대화:\n{{dialog}}[/INST]\n\n\n### 요약:{{summary}}"
@@ -73,7 +72,6 @@ def get_batched_dataset(json_data_path, chunk_size, test_size=0.1):
 
 
 
-    train_data = process_dataset(train_dataset, tokenizer, chunk_size, prompt)
-    test_data = process_dataset(test_dataset, tokenizer, chunk_size, prompt)
+    train_data = process_dataset(json_dataset, tokenizer, chunk_size, prompt)
 
-    return train_data, test_data
+    return train_data
