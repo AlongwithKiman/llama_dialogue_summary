@@ -42,7 +42,7 @@ if __name__ == "__main__":
         model = LlamaForCausalLM.from_pretrained(model_id,\
                                             device_map='auto',\
                                             torch_dtype=torch.float16,\
-                                            # cache_dir=model_config["cache_dir"],\
+                                            cache_dir=model_config["cache_dir"]
                                             # token=model_config["token"])
         )
     elif quant_bit == 8:
@@ -50,7 +50,7 @@ if __name__ == "__main__":
                                             load_in_8bit=True,\
                                             device_map='auto',\
                                             torch_dtype=torch.float16,\
-                                            # cache_dir=model_config["cache_dir"],\
+                                            cache_dir=model_config["cache_dir"]
                                             # token=model_config["token"])
         )
     elif quant_bit == 4:
@@ -58,7 +58,7 @@ if __name__ == "__main__":
                                             load_in_4bit=True,\
                                             device_map='auto',\
                                             torch_dtype=torch.float16,\
-                                            # cache_dir=model_config["cache_dir"],\
+                                            cache_dir=model_config["cache_dir"]
                                             # token=model_config["token"])
         )
 

@@ -6,8 +6,8 @@
     "gradient_accumulation_steps": 2,
     "per_device_train_batch_size": 2,
     "gradient_checkpointing": false,
-    "output_dir": "/dataset/1124",
-    "model_ckpt_save_dir": ""
+    "output_dir": "/dataset/0606",
+    "model_ckpt_save_dir": "/dataset/model/kollama2_0606"
   },
   "dataset_config": {
     "dataset_path": "/dataset/concat_processed.json",
@@ -16,7 +16,7 @@
   "model_config": {
     "model_id": "beomi/llama-2-ko-7b",
     "load_in_bit": 16,
-    "cache_dir": "YOUR_CACHE_DIR_HERE",
+    "cache_dir": "/dataset/huggingface_cache",
     "token": "YOUR_HF_TOKEN_HERE"
   }
 }
