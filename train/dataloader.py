@@ -67,7 +67,7 @@ def get_batched_dataset(json_data_path, chunk_size):
     json_dataset = datasets.load_dataset("json", data_files=json_data_path, split="train")
 
     prompt = (
-        f"[INST]아래는 고객과 상담원의 대화입니다. 아래 대화를 한줄로 요약해주세요. \n\n### 대화:\n{{dialog}}[/INST]\n\n\n### 요약:{{summary}}"
+        f"[INST]아래 대화를 한줄로 요약해주세요. \n\n### 대화:\n{{dialog}}[/INST]\n\n\n### 요약:{{summary}}"
     )
 
 
