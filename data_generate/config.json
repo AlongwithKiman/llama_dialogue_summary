@@ -1,0 +1,5 @@
+{
+  "data_folder_path": "./data/korsum/Training/[라벨]한국어대화요약_train",
+  "save_folder_path": "./data/summary",
+  "OPENAI_API_KEY": "YOUR_KEY_HERE"
+}

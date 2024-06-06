@@ -1,0 +1,9 @@
+data_generate/data/*.json
+data_generate/test.csv
+data_generate/data/korsum
+data_generate/data/summary
+.DS_Store
+data_generate/data
+data_generate/__pycache__
+data_generate/test.csv
+train/__pycache__

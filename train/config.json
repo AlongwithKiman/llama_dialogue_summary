@@ -1,0 +1,22 @@
+{
+  "peft_config": { "r": 8, "lora_alpha": 32, "lora_dropout": 0.05 },
+  "train_config": {
+    "learning_rate": 1e-4,
+    "num_train_epochs": 1,
+    "gradient_accumulation_steps": 2,
+    "per_device_train_batch_size": 2,
+    "gradient_checkpointing": false,
+    "output_dir": "/dataset/1124",
+    "model_ckpt_save_dir": ""
+  },
+  "dataset_config": {
+    "dataset_path": "/dataset/concat_processed.json",
+    "chunk_size": 1024
+  },
+  "model_config": {
+    "model_id": "beomi/llama-2-ko-7b",
+    "load_in_bit": 16,
+    "cache_dir": "YOUR_CACHE_DIR_HERE",
+    "token": "YOUR_HF_TOKEN_HERE"
+  }
+}
