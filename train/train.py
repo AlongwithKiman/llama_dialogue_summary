@@ -38,6 +38,8 @@ def create_peft_config(model):
 if __name__ == "__main__":
     model_id=model_config["model_id"]
     tokenizer = AutoTokenizer.from_pretrained(model_id, max_length=4096, token = model_config["token"])
+    print(model_config["cache_dir"])
+    print(os.getcwd())
     if quant_bit == 16:
         model = LlamaForCausalLM.from_pretrained(model_id,\
                                             device_map='auto',\
