@@ -6,8 +6,8 @@
     "gradient_accumulation_steps": 2,
     "per_device_train_batch_size": 2,
     "gradient_checkpointing": false,
-    "output_dir": "/dataset/0607_llama3",
-    "model_ckpt_save_dir": "/dataset/model/kollama3_0607"
+    "output_dir": "/dataset/0607_llama3_8bit",
+    "model_ckpt_save_dir": "/dataset/model/kollama3_0607_8bit"
   },
   "dataset_config": {
     "dataset_path": "/dataset/concat_processed.json",
@@ -15,7 +15,7 @@
   },
   "model_config": {
     "model_id": "beomi/Llama-3-Open-Ko-8B",
-    "load_in_bit": 16,
+    "load_in_bit": 8,
     "cache_dir": "/dataset/huggingface_cache",
     "token": "YOUR_HF_TOKEN_HERE"
   }
