@@ -45,7 +45,7 @@ if __name__ == "__main__":
                                             device_map='auto',\
                                             torch_dtype=torch.float16,\
                                             cache_dir=model_config["cache_dir"]
-                                            # token=model_config["token"])
+                                            token=model_config["token"]
         )
     elif quant_bit == 8:
         model = LlamaForCausalLM.from_pretrained(model_id,\
@@ -53,7 +53,7 @@ if __name__ == "__main__":
                                             device_map='auto',\
                                             torch_dtype=torch.float16,\
                                             cache_dir=model_config["cache_dir"]
-                                            # token=model_config["token"])
+                                            token=model_config["token"]
         )
     elif quant_bit == 4:
         model = LlamaForCausalLM.from_pretrained(model_id,\
@@ -61,7 +61,7 @@ if __name__ == "__main__":
                                             device_map='auto',\
                                             torch_dtype=torch.float16,\
                                             cache_dir=model_config["cache_dir"]
-                                            # token=model_config["token"])
+                                            token=model_config["token"]
         )
 
     print("Model Loaded")
