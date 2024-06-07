@@ -79,6 +79,7 @@ if __name__ == "__main__":
         with torch.no_grad():
             output = model.generate(**model_input, max_new_tokens=100)[0]
             answer = tokenizer.decode(output, skip_special_tokens = True)
+            print(answer)
             answer = parse(answer)
             num_tokens = len(output)
             _data["infer"] = answer
