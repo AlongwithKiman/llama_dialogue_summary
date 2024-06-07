@@ -64,7 +64,7 @@ def parse(dialog):
         return "error"
 
 if __name__ == "__main__":
-    with open('config.json', 'r', encoding='utf-8') as f:
+    with open(test_data_path, 'r', encoding='utf-8') as f:
         test_data = json.load(f)
     
     test_data = test_data[:num_test_data]
