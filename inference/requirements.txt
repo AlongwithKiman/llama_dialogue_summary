@@ -1,0 +1,17 @@
+transformers 
+datasets 
+accelerate 
+sentencepiece 
+protobuf==3.20 
+py7zr 
+scipy 
+peft 
+bitsandbytes 
+fire 
+torch_tb_profiler 
+ipywidgets
+dataclasses
+tqdm
+flask
+flask-cors
+pyopenssl

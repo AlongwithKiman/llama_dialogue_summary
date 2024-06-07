@@ -49,9 +49,10 @@ if __name__ == "__main__":
 
     # Collect all category data into one json file
     all_data = []
+    num_data = 0
     for root, dirs, files in os.walk(config_data["save_folder_path"]):
         for file in files:
-            if file.endswith('.json'):
+            if file.endswith('.json') and "concat_processed" not in file:
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r', encoding='utf-8') as f:
                     try:
@@ -59,14 +60,18 @@ if __name__ == "__main__":
                         # JSON 데이터가 리스트인 경우 all_data에 추가
                         if isinstance(json_data, list):
                             all_data.extend(json_data)
+                        
+                        num_data += (len(json_data))
                     except json.JSONDecodeError as e:
                         print(f"파일을 열 수 없습니다: {file_path}")
                         print(f"오류: {e}")
+
 
     # 모든 데이터를 하나의 파일로 저장
     output_file_path = os.path.join(config_data["save_folder_path"], "concat_processed.json")
     with open(output_file_path, 'w', encoding='utf-8') as output_file:
         json.dump(all_data, output_file, ensure_ascii=False, indent=4)
 
+    print(f"총 데이터{num_data}개")
     print(f"모든 데이터를 {output_file_path}에 저장했습니다.")
 

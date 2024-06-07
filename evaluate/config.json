@@ -1,0 +1,12 @@
+{
+  "test_config": {
+    "test_file_path": "YOUR_DATA_DIR_HERE"
+  },
+  "model_config": {
+    "model_id": "beomi/llama-2-ko-7b",
+    "load_in_bit": 16,
+    "cache_dir": "YOUR_CACHE_DIR_HERE",
+    "model_ckpt_load_dir": ""
+  },
+  "OPENAI_API_KEY": "YOUR_KEY_HERE"
+}
