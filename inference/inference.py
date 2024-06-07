@@ -64,7 +64,7 @@ def parse(dialog):
         return "error"
 
 if __name__ == "__main__":
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open('config.json', 'r', encoding='utf-8') as f:
         test_data = json.load(f)
     
     test_data = test_data[:num_test_data]
@@ -86,9 +86,9 @@ if __name__ == "__main__":
         print(_data)
         result.append(_data)
         
-    os.makedirs(output_file_path, exist_ok=True)    
-    output_file_path = os.path.join(result_save_path, "infer_result.json")
-    with open(output_file_path, 'w', encoding='utf-8') as output_file:
+    os.makedirs(result_save_path, exist_ok=True)    
+    result_save_path = os.path.join(result_save_path, "infer_result.json")
+    with open(result_save_path, 'w', encoding='utf-8') as output_file:
         json.dump(result, output_file, ensure_ascii=False, indent=4)
 
 
