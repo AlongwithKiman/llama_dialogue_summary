@@ -4,7 +4,7 @@ from transformers import LlamaForCausalLM, LlamaTokenizer,AutoTokenizer, default
 import datasets
 from time import time
 import re
-
+import os
 
 
 with open('config.json', 'r') as f:
