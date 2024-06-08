@@ -70,7 +70,9 @@ if __name__ == "__main__":
     
     test_data = test_data[:num_test_data]
     result = []
+    i = 0
     for _data in test_data:
+        i += 1
         _dialogue = _data["dialogue"]
         prompt = f"[INST]아래 대화를 한줄로 요약해주세요. \n\n### 대화:{_dialogue}\n[/INST]\n\n\n### 요약:"
         model_input = tokenizer(prompt, return_tensors="pt").to("cuda")
@@ -86,6 +88,7 @@ if __name__ == "__main__":
             _data["infer"] = answer
 
         print(_data)
+        print(f"current: {i / num_test_data}")
         result.append(_data)
         
     os.makedirs(result_save_path, exist_ok=True)    
