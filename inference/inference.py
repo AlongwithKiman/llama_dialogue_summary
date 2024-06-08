@@ -25,7 +25,7 @@ else:
     model_path = model_id
 
 
-tokenizer = AutoTokenizer.from_pretrained(model_id, max_length=2048)
+tokenizer = AutoTokenizer.from_pretrained(model_id, max_length=2048, token = model_config["token"])
 
 if quant_bit == 16:
     model = LlamaForCausalLM.from_pretrained(model_path,\
