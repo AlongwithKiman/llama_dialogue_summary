@@ -6,7 +6,7 @@
     "load_in_bit": 16,
     "cache_dir": "/dataset/huggingface_cache",
     "test_data_path": "/dataset/concat_processed_val.json",
-    "num_test_data": 10,
-    "result_save_path": "/dataset/infer_result/kollama3_0607_16bit"
+    "num_test_data": 500,
+    "result_save_path": "/dataset/infer_result/kollama3_0607_16bit_500"
   }
 }
