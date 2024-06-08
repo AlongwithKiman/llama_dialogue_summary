@@ -1,7 +1,7 @@
 import os
 import json
 import torch
-from transformers import LlamaForCausalLM, LlamaTokenizer,AutoTokenizer, default_data_collator, Trainer, TrainingArguments, TrainerCallback, BitsAndBytesConfig
+from transformers import LlamaForCausalLM, AutoModelForCausalLM, LlamaTokenizer,AutoTokenizer, default_data_collator, Trainer, TrainingArguments, TrainerCallback, BitsAndBytesConfig
 import datasets
 from dataloader import get_batched_dataset
 from contextlib import nullcontext
@@ -16,6 +16,10 @@ train_config = config_data["train_config"]
 model_config = config_data["model_config"]
 quant_bit = model_config["load_in_bit"]
 
+def get_device_map() -> str:
+    return 'cuda' if torch.cuda.is_available() else 'cpu'
+
+device = get_device_map()
 
 def create_peft_config(model):
     get_peft_config = LoraConfig(
@@ -41,24 +45,24 @@ if __name__ == "__main__":
     print(model_config["cache_dir"])
     print(os.getcwd())
     if quant_bit == 16:
-        model = LlamaForCausalLM.from_pretrained(model_id,\
-                                            device_map='auto',\
+        model = AutoModelForCausalLM.from_pretrained(model_id,\
+                                            device_map=device,\
                                             torch_dtype=torch.float16,\
                                             cache_dir=model_config["cache_dir"],\
                                             token=model_config["token"]
         )
     elif quant_bit == 8:
-        model = LlamaForCausalLM.from_pretrained(model_id,\
+        model = AutoModelForCausalLM.from_pretrained(model_id,\
                                             load_in_8bit=True,\
-                                            device_map='auto',\
+                                            device_map=device,\
                                             torch_dtype=torch.float16,\
                                             cache_dir=model_config["cache_dir"],\
                                             token=model_config["token"]
         )
     elif quant_bit == 4:
-        model = LlamaForCausalLM.from_pretrained(model_id,\
+        model = AutoModelForCausalLM.from_pretrained(model_id,\
                                             load_in_4bit=True,\
-                                            device_map='auto',\
+                                            device_map=device,\
                                             torch_dtype=torch.float16,\
                                             cache_dir=model_config["cache_dir"],\
                                             token=model_config["token"]
